@@ -1,5 +1,5 @@
 # GPIO
-Samlat om GPIO
+Samlat om GPIO och Arduinokompatibla µController's
 
 ## Fördefinierade constanter
 * ```HIGH```                  // Digital 1
