@@ -11,7 +11,7 @@ Samlat om GPIO och Arduinokompatibla µController's
 ## Pinmode INPUT
 ```c
 pinMode(pin, INPUT);          // set pin to input
-pinMode(pin, INPUT_PULLUP);   // set pin to input with 10k PU
+pinMode(pin, INPUT_PULLUP);   // set pin to input with 10k internally PU
 
 value = digitalRead(pin);     // read the input pin
 ```
