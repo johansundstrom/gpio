@@ -17,31 +17,31 @@ Samlat om GPIO och Arduinokompatibla µController's
 * D3(arduino board märkning) = pin 0(GPIO0)
 Följande är samma kod
 ```c
-int pin = 0; // GPIO0 = pin D3
-int pin = D3; // pin D3 = GPIO0
+int pin = 0; 		// GPIO0 = pin D3
+int pin = D3; 		// pin D3 = GPIO0
 ```
 
 
 ## Pinmode INPUT
 ```c
-pinMode(pin, INPUT);          // Gör pin till input
-pinMode(pin, INPUT_PULLUP);   // Gör pin till input med intern pullup på 10k 
+pinMode(pin, INPUT);		// Gör pin till input
+pinMode(pin, INPUT_PULLUP);	// Gör pin till input med intern pullup på 10k 
 
-value = digitalRead(pin);     // Läs input pin
+value = digitalRead(pin);	// Läs input pin
 ```
 
 ## Pinmode OUTPUT
 ```c
-pinMode(pin, OUTPUT);         // Gör pin till output - 12mA driv (Source) ~20mA jord (Sink)
+pinMode(pin, OUTPUT);		// Gör pin till output - 12mA driv (Source) ~20mA jord (Sink)
 
-digitalWrite(pin, value);     // Skriv _value_ till pin
+digitalWrite(pin, value);	// Skriv _value_ till pin
 ```
 
 ## Interupt
 ```c
-const int knapp = 2;                // D2
-const int lampa = 3;                // D3
-volatile byte state = LOW;          // initialt state = 0
+const int knapp = 2;		// D2
+const int lampa = 3;		// D3
+volatile byte state = LOW;	// initialt state = 0
 
 void setup() {
 	pinMode(knapp, INPUT_PULLUP);    // switch mellan D0 och jord
@@ -61,10 +61,11 @@ void ISR() {
 ```
 
 ## Lång/kort knapptryck
+Ett tryck på button mindre än longPressTime ger LED1, annars LED2
 ```c
-int LED1 = D1;		//pin D1 --> LED --> 220R --> GND
-int LED2 = D2;		//pin D2 --> LED --> 220R --> GND
-int button = D3;	// VCC --> 10K --> pin D3 --> SW --> GND
+int LED1 = D1;			// pin D1 --> LED --> 220R --> GND
+int LED2 = D2;			// pin D2 --> LED --> 220R --> GND
+int button = D3;		// VCC --> 10K --> pin D3 --> SW --> GND
 
 boolean LED1State = false;
 boolean LED2State = false;
