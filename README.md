@@ -8,6 +8,14 @@ Samlat om GPIO och Arduinokompatibla µController's
 * ```true```                  // motsvarar 1 eller Sant
 * ```false```                 // motsvarar 0 eller falskt
 
+## PIN vs GPIO
+* D3(arduino board) = pin 0(GPIO0)
+```c
+int pin = 0; // GPIO0 - pin D3
+int pin = D3; // GPIO0 - pin D3
+```
+
+
 ## Pinmode INPUT
 ```c
 pinMode(pin, INPUT);          // Gör pin till input
