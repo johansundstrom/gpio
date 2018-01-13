@@ -17,8 +17,8 @@ Samlat om GPIO och Arduinokompatibla µController's
 * D3(arduino board märkning) = pin 0(GPIO0)
 Följande är samma kod
 ```c
-int pin = 0; 		// GPIO0 = pin D3
-int pin = D3; 		// pin D3 = GPIO0
+int pin = 0; 		// GPIO0 = pin D3(märkning på kortet)
+int pin = D3; 		// pin D3(märkning på kortet) = GPIO0
 ```
 
 
