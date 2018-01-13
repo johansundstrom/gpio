@@ -1,7 +1,7 @@
 # GPIO
 Samlat om GPIO och Arduinokompatibla µController's
 
-## Fördefinierade constanter
+## Fördefinierade konstanter
 * ```HIGH```		// Digital 1
 * ```LOW```		// Digiltal 0
 * ```LED_BUILTIN```	// Definierar pin för inbyggd LED
