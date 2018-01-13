@@ -39,13 +39,13 @@ digitalWrite(pin, value);	// Skriv _value_ till pin
 
 ## Interupt
 ```c
-const int knapp = 2;		// D2
-const int lampa = 3;		// D3
+const int knapp = D2;		// pin D2 --> GND
+const int lampa = D3;		// pin D3 --> LED --> 220R --> GND
 volatile byte state = LOW;	// initialt state = 0
 
 void setup() {
-	pinMode(knapp, INPUT_PULLUP);    // switch mellan D0 och jord
-	pinMode(lampa, OUTPUT);          // LED och ~220R mellan D1 och jord
+	pinMode(knapp, INPUT_PULLUP);
+	pinMode(lampa, OUTPUT);
    
 	// CHANGE - trigg på varje förändring [ LOW | CHANGE  RISING | FALLING | HIGH ]
 	attachInterrupt(digitalPinToInterrupt(knapp), ISR, CHANGE);
@@ -83,30 +83,28 @@ void setup() {
 }
 
 void loop() {
-	Serial.println(digitalRead(button));
 	if (digitalRead(button) == LOW) {
-
-	if (buttonActive == false) {
-		buttonActive = true;
-		buttonTimer = millis();
-	}
-  
-	if ((millis() - buttonTimer > longPressTime) && (longPressActive == false)) {
-		longPressActive = true;
-		LED1State = !LED1State;
-		digitalWrite(LED1, LED1State);
-	}
-  
-} else {
-  
-	if (buttonActive == true) {
-		if (longPressActive == true) {
-			longPressActive = false;
-		} else {
-			LED2State = !LED2State;
-			digitalWrite(LED2, LED2State);
+		if (buttonActive == false) {
+			buttonActive = true;
+			buttonTimer = millis();
 		}
-		buttonActive = false;
+  
+		if ((millis() - buttonTimer > longPressTime) && (longPressActive == false)) {
+			longPressActive = true;
+			LED1State = !LED1State;
+			digitalWrite(LED1, LED1State);
+		}
+  
+	} else {
+  
+		if (buttonActive == true) {
+			if (longPressActive == true) {
+				longPressActive = false;
+			} else {
+				LED2State = !LED2State;
+				digitalWrite(LED2, LED2State);
+			}
+			buttonActive = false;
 		}
   	}
 }
