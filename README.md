@@ -109,3 +109,26 @@ void loop() {
   	}
 }
 ```
+
+## Trigga på kantvåg
+För att eliminera knappstuds kan man trigga på hög-låg övergång
+
+```c
+const int knapp = D11;	// VCC --> SW --> D2 --> 10K --> GND
+const int LED = 13;	// 13 --> LED --> 220R --> GND
+const int debounceInterval = 50;
+
+function setup() {
+	buttonStateRising = digitalRead(knapp);
+}
+
+function loop() {
+	if ((buttonStateRising == HIGH) && (lastButtonStateRising == LOW)) {
+		if (millis() - millisPrevious >= debounceInterval) {  // if debounce interval expired
+			DigitalWrite(LED, HIGH);
+		}
+		millisPrevious = millis();
+	}
+	lastButtonStateRising = buttonStateRising;
+}
+```
